@@ -1,9 +1,13 @@
 import { Image, StyleSheet, Text, View, Dimensions, TouchableOpacity } from "react-native";
 import Colors from "../constant/Colors";
+import { useRouter } from "expo-router";
 
 const { height } = Dimensions.get("window");
 
 export default function Index() {
+
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <Image
@@ -19,11 +23,16 @@ export default function Index() {
           Organize. Collaborate. Simplify your study flow with custom syllabi.
         </Text>
 
-        <TouchableOpacity style={styles.primaryButton}>
+        <TouchableOpacity style={styles.primaryButton} 
+          onPress={()=>router.push('auth/signUp')}
+        >
           <Text style={styles.primaryButtonText}>Get Started</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.secondaryButton}>
+        <TouchableOpacity style={styles.secondaryButton}
+          onPress={()=>router.push('auth/signIn')}
+        
+        >
           <Text style={styles.secondaryButtonText}>Already have an account?</Text>
         </TouchableOpacity>
       </View>
@@ -94,3 +103,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+ 
